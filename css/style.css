@@ -22,3 +22,11 @@ img {
 h1 {
   font-weight: bold;
 }
+
+.movies-search-input {
+  width: 500px;
+}
+
+.result-search {
+  width: 50%;
+}

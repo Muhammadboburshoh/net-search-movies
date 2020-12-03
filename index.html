@@ -13,17 +13,19 @@
 <div class="container">
   <h1 class="title has-text-centered mt-3">Movies</h1>
 
-  <form action="https://echo.htmlacademy.ru">
+  <form class="js-search-form" action="https://echo.htmlacademy.ru">
     <div class="field has-addons is-flex is-justify-content-center">
       <div class="control">
-        <input style="width: 500px;" class="input is-info is-rounded" name="movies-search-input" type="text" placeholder="Search movie...">
+        <input class="movies-search-input input is-info is-rounded js-movies-search" name="movies-search-input" type="text" placeholder="Search movie...">
       </div>
       <div class="control">
-        <button class="button is-info is-rounded">Search</button>
+        <button class="button is-info is-rounded js-search-button">Search</button>
       </div>
     </div>
   </form>
-<hr>
+
+  <hr>
+
   <div class="is-flex is-justify-content-space-between">
     <ul class="result-search"></ul>
     <div class="about-search"></div>
@@ -31,6 +33,13 @@
 
 </div>
 
+
+  <template>
+    <li class="p-2 is-flex is-align-items-center">
+      <p class="movie-title is-flex-grow-1"></p>
+      <button class="button is-success ml-2">info</button>
+    </li>
+  </template>
 
   <script src="js/utils.js"></script>
   <script src="js/script.js"></script>
