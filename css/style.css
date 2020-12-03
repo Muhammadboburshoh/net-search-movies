@@ -12,6 +12,9 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Livvic", "Arial", sans-serif;
+  color: #fff;
+  min-height: 100vh;
+  height: 100%;
 }
 
 img {
@@ -19,8 +22,9 @@ img {
   height: auto;
 }
 
-h1 {
-  font-weight: bold;
+.header-heading {
+  text-align: center;
+  color: #fff;
 }
 
 .movies-search-input {
@@ -29,4 +33,12 @@ h1 {
 
 .result-search {
   width: 50%;
+}
+
+.movie-about {
+  width: 48%;
+}
+
+.movie-title {
+  font-size: 20px;
 }

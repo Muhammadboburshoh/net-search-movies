@@ -8,10 +8,10 @@
   <link rel="stylesheet" href="node_modules/bulma/css/bulma.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="has-background-grey">
 
 <div class="container">
-  <h1 class="title has-text-centered mt-3">Movies</h1>
+  <h1 class="header-heading title pt-3">Movies</h1>
 
   <form class="js-search-form" action="https://echo.htmlacademy.ru">
     <div class="field has-addons is-flex is-justify-content-center">
@@ -27,20 +27,30 @@
   <hr>
 
   <div class="is-flex is-justify-content-space-between">
-    <ul class="result-search"></ul>
-    <div class="about-search"></div>
+    <ul class="search-results"></ul>
+    <div class="movie-about"></div>
   </div>
 
 </div>
 
 
-  <template>
-    <li class="p-2 is-flex is-align-items-center">
-      <p class="movie-title is-flex-grow-1"></p>
-      <button class="button is-success ml-2">info</button>
+  <template id="search-result-template">
+    <li class="p-2 is-flex is-align-items-center js-search-result">
+      <p class="movie-title is-flex-grow-1 js-result-movie-title"></p>
+      <button class="button is-success ml-2 js-info-button">info</button>
     </li>
   </template>
 
+  <template id="movie-about-template">
+    <div class="about-wrapper">
+      <img src="" alt="Movie img" width="200" height="400">
+
+      <div class="movie-about">
+        <h3 class="movie-title title js-movie-title">moviename</h3>
+        <p><b>Year:</b></p>
+      </div>
+    </div>
+  </template>
   <script src="js/utils.js"></script>
   <script src="js/script.js"></script>
 </body>
