@@ -53,23 +53,32 @@ elSearchForm.addEventListener("submit", function (evt) {
 })
 
 elSearchBtn.addEventListener("click", function(evt) {
-  
+  if(evt.target.matches(".js-search-button")) {
+    var movieID = evt.target.closest(".js-search-result").dataset.id;
+    var MAIN_URL = `https://www.omdbapi.com/?apikey=${API_KEY}&i=${movieID}&plot=full`;
+
+    fetch(MAIN_URL).this((response) => {
+      return response.json();
+    }).then((data) => {
+      // renderInfo(data);
+      console.log(data);
+    })
+  }
 })
 
 
-// var SEARCH_QUERY;
-//var elBekorchiButton = document.querySelector('.bekorchi-button');
+// elMovies.addEventListener('click', (evt) => {
+// 	if(evt.target.matches('.movie__button')) {
+// 		var movieID = evt.target.closest('.movie').dataset.id;
+// 		var MAIN_URL = `https://www.omdbapi.com/?apikey=${API_KEY}&i=${movieID}&plot=full`;
+		
+// 		evt.target.classList.add('is-loading');
 
-// elBekorchiButton.addEventListener('click', function() {
-//   fetch(`http://omdbapi.com/?apikey=${API_KEY}&s=${SEARCH_QUERY}`).then(function (response) {
-//     if (!response.ok) {
-//       throw new Error(`Error ${response.status}: ${response.statusText}`);
-//     }
-
-//     return response.json();
-//   }).then(function (data) {
-//     console.log(data);
-//     console.log(data.Search);
-//     console.log(data.Search[0]);
-//   });
+// 		fetch(MAIN_URL).then((response) => {
+// 			return response.json();
+// 		}).then((data) => {
+// 			evt.target.classList.remove('is-loading');
+// 			renderInfo(data);
+// 		});
+// 	}
 // });
