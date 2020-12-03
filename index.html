@@ -10,8 +10,28 @@
 </head>
 <body>
 
-  <butto class="button is-info">olam</button>
-  
+<div class="container">
+  <h1 class="title has-text-centered mt-3">Movies</h1>
+
+  <form action="https://echo.htmlacademy.ru">
+    <div class="field has-addons is-flex is-justify-content-center">
+      <div class="control">
+        <input style="width: 500px;" class="input is-info is-rounded" name="movies-search-input" type="text" placeholder="Search movie...">
+      </div>
+      <div class="control">
+        <button class="button is-info is-rounded">Search</button>
+      </div>
+    </div>
+  </form>
+<hr>
+  <div class="is-flex is-justify-content-space-between">
+    <ul class="result-search"></ul>
+    <div class="about-search"></div>
+  </div>
+
+</div>
+
+
   <script src="js/utils.js"></script>
   <script src="js/script.js"></script>
 </body>
