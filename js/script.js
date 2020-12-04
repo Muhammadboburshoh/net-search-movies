@@ -23,7 +23,6 @@ var createResultMovie = function(movie) {
   return searchResult;
 }
 
-
 var renderMoviesList = function (moviesArray) {
   elSearchResults.innerHTML = '';
   var elMoviesFragment = document.createDocumentFragment();
@@ -50,8 +49,15 @@ elSearchForm.addEventListener("submit", function (evt) {
     return response.json();
   }).then(function (data) {
     
+    
+    if(data.Response === "False") {
+      alert("Xato nateja");
+      return;
+    }
+    
     moviesArray = data.Search;
-console.log(moviesArray);
+    console.log(data);
+
     renderMoviesList(moviesArray);
   });
 
@@ -79,33 +85,3 @@ elSearchResults.addEventListener("click", function(evt) {
   }
 })
 
-/* elSearchBtn.addEventListener("click", function(evt) {
-  if(evt.target.matches(".js-search-button")) {
-    var movieID = evt.target.closest(".js-search-result").dataset.id;
-    var MAIN_URL = `https://www.omdbapi.com/?apikey=${API_KEY}&i=${movieID}&plot=full`;
-
-    fetch(MAIN_URL).this((response) => {
-      return response.json();
-    }).then((data) => {
-      // renderInfo(data);
-      console.log(data);
-    })
-  }
-}) */
-
-
-// elMovies.addEventListener('click', (evt) => {
-// 	if(evt.target.matches('.movie__button')) {
-// 		var movieID = evt.target.closest('.movie').dataset.id;
-// 		var MAIN_URL = `https://www.omdbapi.com/?apikey=${API_KEY}&i=${movieID}&plot=full`;
-		
-// 		evt.target.classList.add('is-loading');
-
-// 		fetch(MAIN_URL).then((response) => {
-// 			return response.json();
-// 		}).then((data) => {
-// 			evt.target.classList.remove('is-loading');
-// 			renderInfo(data);
-// 		});
-// 	}
-// });
