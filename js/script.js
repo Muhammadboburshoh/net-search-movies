@@ -1,12 +1,15 @@
 var API_KEY = '6319ea28';
 
-var moviesArray;
+var moviesArray = [];
 
 var elSearchForm = $_(".js-search-form");
 var elSearchInput = $_(".js-movies-search", elSearchForm);
 var elSearchBtn = $_(".js-search-button", elSearchForm);
 
-var elSearchResults = $_(".search-results")
+var elSearchResults = $_(".search-results");
+
+var movieResultInfo = $_(".movie-about");
+
 
 var searchResultTemplate = $_("#search-result-template").content;
 
@@ -56,7 +59,6 @@ elSearchForm.addEventListener("submit", function (evt) {
     }
     
     moviesArray = data.Search;
-    console.log(data);
 
     renderMoviesList(moviesArray);
   });
@@ -64,14 +66,14 @@ elSearchForm.addEventListener("submit", function (evt) {
 })
 
 var renderMovieInfo = function(movie) {
-  $_(".movie-about").innerHTML = "";
+  movieResultInfo.innerHTML = "";
   var movieEbout = elMovieEboutTemplate.cloneNode(true);
 
   $_(".movie-img", movieEbout).src = movie.Poster;
   $_(".movie-about-title", movieEbout).textContent = movie.Title;
   $_(".movie-year", movieEbout).textContent += movie.Year;
 
-  $_(".movie-about").appendChild(movieEbout);
+  movieResultInfo.appendChild(movieEbout);
 }
 
 
