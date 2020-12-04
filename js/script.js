@@ -1,5 +1,7 @@
 var API_KEY = '6319ea28';
 
+var moviesArray;
+
 var elSearchForm = $_(".js-search-form");
 var elSearchInput = $_(".js-movies-search", elSearchForm);
 var elSearchBtn = $_(".js-search-button", elSearchForm);
@@ -7,6 +9,8 @@ var elSearchBtn = $_(".js-search-button", elSearchForm);
 var elSearchResults = $_(".search-results")
 
 var searchResultTemplate = $_("#search-result-template").content;
+
+var elMovieEboutTemplate = $_("#movie-about-template").content;
 
 
 var createResultMovie = function(movie) {
@@ -46,13 +50,36 @@ elSearchForm.addEventListener("submit", function (evt) {
     return response.json();
   }).then(function (data) {
     
-    renderMoviesList(data.Search);
-
+    moviesArray = data.Search;
+console.log(moviesArray);
+    renderMoviesList(moviesArray);
   });
 
 })
 
-elSearchBtn.addEventListener("click", function(evt) {
+var renderMovieInfo = function(movie) {
+  $_(".movie-about").innerHTML = "";
+  var movieEbout = elMovieEboutTemplate.cloneNode(true);
+
+  $_(".movie-img", movieEbout).src = movie.Poster;
+  $_(".movie-about-title", movieEbout).textContent = movie.Title;
+  $_(".movie-year", movieEbout).textContent += movie.Year;
+
+  $_(".movie-about").appendChild(movieEbout);
+}
+
+
+elSearchResults.addEventListener("click", function(evt) {
+  if(evt.target.matches(".js-info-button")) {
+    moviesArray.forEach(function(movie) {
+      if(movie.imdbID === evt.target.dataset.imdbId) {
+        renderMovieInfo(movie);
+      }
+    })
+  }
+})
+
+/* elSearchBtn.addEventListener("click", function(evt) {
   if(evt.target.matches(".js-search-button")) {
     var movieID = evt.target.closest(".js-search-result").dataset.id;
     var MAIN_URL = `https://www.omdbapi.com/?apikey=${API_KEY}&i=${movieID}&plot=full`;
@@ -64,7 +91,7 @@ elSearchBtn.addEventListener("click", function(evt) {
       console.log(data);
     })
   }
-})
+}) */
 
 
 // elMovies.addEventListener('click', (evt) => {
